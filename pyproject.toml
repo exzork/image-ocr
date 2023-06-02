@@ -16,13 +16,13 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 description = "A packaged and flexible version of the CRAFT text detector and Keras CRNN recognition model."
-homepage = "https://github.com/geo-tp/kerasocr"
+homepage = "https://github.com/geo-tp/image-ocr"
 license = "MIT"
-name = "kerasocr"
+name = "image-ocr"
 readme = "README.md"
-repository = "https://github.com/geo-tp/kerasocr"
+repository = "https://github.com/geo-tp/image-ocr"
 # Placeholder for poetry-dynamic-versioning
-version = "0.0.0"
+version = "0.0.1"
 
 # See https://python-poetry.org/docs/versions/ for allowed version specification formats
 [tool.poetry.dependencies]
