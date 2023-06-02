@@ -19,8 +19,10 @@ pip install image-ocr
 
 ### <b>Using</b>
 
+
 The package ships with an easy-to-use implementation of the CRAFT text detection model from [this repository](https://github.com/clovaai/CRAFT-pytorch) and the CRNN recognition model from [this repository](https://github.com/kurapan/CRNN).
 
+Try [image-ocr on Colab](https://colab.research.google.com/drive/1eRf9CbhZ8fVakjYN4yCtTqB-MPWejVxN?usp=sharing)
 ```python
 import matplotlib.pyplot as plt
 
@@ -50,6 +52,13 @@ for ax, image, predictions in zip(axs, images, prediction_groups):
 ```
 
 ![example of labeled image](https://raw.githubusercontent.com/faustomorales/keras-ocr/master/docs/_static/readme_labeled.jpg)
+
+## <b>Training</b>
+
+Detector training example : [Detector Training Colab](https://colab.research.google.com/drive/15maYyNZdqnLl_P_all2a-x9GF7Ug2tIJ?usp=sharing)
+
+Recognizer training example [Recognizer Training Colab](https://colab.research.google.com/drive/1AcnHoeRycoqNuMNS0T146LH1MbtmgV_T?usp=sharing)
+
 
 ## <b>Comparing image-ocr and other OCR approaches</b>
 
