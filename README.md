@@ -6,6 +6,15 @@
 
 ## <b>It supports new Google Colaboratory `python 3.10` backend</b>
 
+## <b>Interactive examples</b>
+
+### - [Detector Training](https://colab.research.google.com/drive/15maYyNZdqnLl_P_all2a-x9GF7Ug2tIJ?usp=sharing) 
+
+### - [Recognizer Training](https://colab.research.google.com/drive/1AcnHoeRycoqNuMNS0T146LH1MbtmgV_T?usp=sharing)
+
+### - [Using](https://colab.research.google.com/drive/1eRf9CbhZ8fVakjYN4yCtTqB-MPWejVxN?usp=sharing)
+
+## <b>Informations</b>
 
 This is a slightly polished and packaged version of the [Keras CRNN implementation](https://github.com/kurapan/CRNN) and the published [CRAFT text detection model](https://github.com/clovaai/CRAFT-pytorch). It provides a high level API for training a text detection and OCR pipeline.
 
