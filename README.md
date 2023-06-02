@@ -35,9 +35,9 @@ pipeline = image_ocr.pipeline.Pipeline()
 # Get a set of three example images
 images = [
     image_ocr.tools.read(url) for url in [
-        'https://upload.wikimedia.org/wikipedia/commons/b/bd/Army_Reserves_Recruitment_Banner_MOD_45156284.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/e/e8/FseeG2QeLXo.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/b/b4/EUBanana-500x112.jpg'
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Kali_Linux_2.0_wordmark.svg/langfr-420px-Kali_Linux_2.0_wordmark.svg.png',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Enseigne_de_pharmacie_lumineuse.jpg/180px-Enseigne_de_pharmacie_lumineuse.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Boutique_Christian_Lacroix.jpg/330px-Boutique_Christian_Lacroix.jpg',
     ]
 ]
 
