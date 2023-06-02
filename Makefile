@@ -1,6 +1,6 @@
 .PHONY: docs
 
-PKG_NAME:=keras_ocr
+PKG_NAME:=image_ocr
 
 # Select specific Python tests to run using pytest selectors
 # e.g., make test TEST_SCOPE='-m "not_integration" tests/api/'

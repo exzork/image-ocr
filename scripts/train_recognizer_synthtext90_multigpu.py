@@ -18,7 +18,7 @@ import imgaug
 import tqdm
 import tensorflow as tf
 
-import keras_ocr
+import image_ocr
 
 
 # pylint: disable=redefined-outer-name
@@ -51,25 +51,23 @@ def download_extract_and_process_dataset(data_path):
     if not os.path.isdir(extraction_directory):
         print("Extracting files.")
         with tarfile.open(os.path.join(data_path, "mjsynth.tar.gz")) as tfile:
+
             def is_within_directory(directory, target):
-                
                 abs_directory = os.path.abspath(directory)
                 abs_target = os.path.abspath(target)
-            
+
                 prefix = os.path.commonprefix([abs_directory, abs_target])
-                
+
                 return prefix == abs_directory
-            
+
             def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
-            
                 for member in tar.getmembers():
                     member_path = os.path.join(path, member.name)
                     if not is_within_directory(path, member_path):
                         raise Exception("Attempted Path Traversal in Tar File")
-            
-                tar.extractall(path, members, numeric_owner=numeric_owner) 
-                
-            
+
+                tar.extractall(path, members, numeric_owner=numeric_owner)
+
             safe_extract(tfile, data_path)
 
 
@@ -82,7 +80,7 @@ def get_image_generator(filepaths, augmenter, width, height):
         if image is None:
             print(f"An error occurred reading: {filepath}")
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        image = keras_ocr.tools.fit(
+        image = image_ocr.tools.fit(
             image,
             width=width,
             height=height,
@@ -127,7 +125,7 @@ if __name__ == "__main__":
     csv_path = os.path.join(args.logs_path, args.model_id + ".csv")
     download_extract_and_process_dataset(args.data_path)
     with tf.distribute.MirroredStrategy().scope():
-        recognizer = keras_ocr.recognition.Recognizer(
+        recognizer = image_ocr.recognition.Recognizer(
             alphabet=string.digits + string.ascii_lowercase,
             height=31,
             width=200,

@@ -25,15 +25,15 @@ The package ships with an easy-to-use implementation of the CRAFT text detection
 ```python
 import matplotlib.pyplot as plt
 
-import keras_ocr
+import image_ocr
 
 # keras-ocr will automatically download pretrained
 # weights for the detector and recognizer.
-pipeline = keras_ocr.pipeline.Pipeline()
+pipeline = image_ocr.pipeline.Pipeline()
 
 # Get a set of three example images
 images = [
-    keras_ocr.tools.read(url) for url in [
+    image_ocr.tools.read(url) for url in [
         'https://upload.wikimedia.org/wikipedia/commons/b/bd/Army_Reserves_Recruitment_Banner_MOD_45156284.jpg',
         'https://upload.wikimedia.org/wikipedia/commons/e/e8/FseeG2QeLXo.jpg',
         'https://upload.wikimedia.org/wikipedia/commons/b/b4/EUBanana-500x112.jpg'
@@ -47,7 +47,7 @@ prediction_groups = pipeline.recognize(images)
 # Plot the predictions
 fig, axs = plt.subplots(nrows=len(images), figsize=(20, 20))
 for ax, image, predictions in zip(axs, images, prediction_groups):
-    keras_ocr.tools.drawAnnotations(image=image, predictions=predictions, ax=ax)
+    image_ocr.tools.drawAnnotations(image=image, predictions=predictions, ax=ax)
 ```
 
 ![example of labeled image](https://raw.githubusercontent.com/faustomorales/keras-ocr/master/docs/_static/readme_labeled.jpg)
@@ -65,11 +65,11 @@ You may be wondering how the models in this package compare to existing cloud OC
 | ----------------------------------------------------------------------------------------------------------------------------- | ------- | --------- | ------ |
 | [AWS](https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/aws_annotations.json)                               | 719ms   | 0.45      | 0.48   |
 | [GCP](https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/google_annotations.json)                            | 388ms   | 0.53      | 0.58   |
-| [keras-ocr](https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/keras_ocr_annotations_scale_2.json) (scale=2) | 417ms   | 0.53      | 0.54   |
-| [keras-ocr](https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/keras_ocr_annotations_scale_3.json) (scale=3) | 699ms   | 0.5       | 0.59   |
+| [keras-ocr](https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/image_ocr_annotations_scale_2.json) (scale=2) | 417ms   | 0.53      | 0.54   |
+| [keras-ocr](https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/image_ocr_annotations_scale_3.json) (scale=3) | 699ms   | 0.5       | 0.59   |
 
 - Precision and recall were computed based on an intersection over union of 50% or higher and a text similarity to ground truth of 50% or higher.
-- `keras-ocr` latency values were computed using a Tesla P4 GPU on Google Colab. `scale` refers to the argument provided to `keras_ocr.pipelines.Pipeline()` which determines the upscaling applied to the image prior to inference.
+- `keras-ocr` latency values were computed using a Tesla P4 GPU on Google Colab. `scale` refers to the argument provided to `image_ocr.pipelines.Pipeline()` which determines the upscaling applied to the image prior to inference.
 - Latency for the cloud providers was measured with sequential requests, so you can obtain significant speed improvements by making multiple simultaneous API requests.
 - Each of the entries provides a link to the JSON file containing the annotations made on each pass. You can use this with the notebook to compute metrics without having to make the API calls yourself (though you are encoraged to replicate it independently)!
 
@@ -80,7 +80,7 @@ By default if a GPU is available Tensorflow tries to grab almost all of the avai
 
 You can also specify a limit per Tensorflow process by setting the environment variable `MEMORY_ALLOCATED` to any float, and this value is a float ratio of VRAM to the total amount present.
 
-To apply these changes, call `keras_ocr.config.configure()` at the top of your file where you import `keras_ocr`.
+To apply these changes, call `image_ocr.config.configure()` at the top of your file where you import `image_ocr`.
 
 ## Contributing
 

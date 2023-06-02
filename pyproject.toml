@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 omit = []
 
 [tool.poetry]
-authors = ["Fausto Morales <faustomorales@gmail.com>"]
+authors = ["Geo <geoffrey.menon38@gmail.com>"]
 classifiers = [
     "Operating System :: POSIX :: Linux",
     "Operating System :: Unix",
@@ -16,17 +16,17 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 description = "A packaged and flexible version of the CRAFT text detector and Keras CRNN recognition model."
-homepage = "https://github.com/faustomorales/keras-ocr"
+homepage = "https://github.com/geo-tp/image_ocr"
 license = "MIT"
-name = "keras-ocr"
+name = "image_ocr"
 readme = "README.md"
-repository = "https://github.com/faustomorales/keras-ocr"
+repository = "https://github.com/geo-tp/image_ocr"
 # Placeholder for poetry-dynamic-versioning
 version = "0.0.0"
 
 # See https://python-poetry.org/docs/versions/ for allowed version specification formats
 [tool.poetry.dependencies]
-python = ">=3.7.5,<3.10"
+python = ">=3.9"
 validators = "*"
 essential_generators = "*"
 tqdm = "*"
@@ -35,7 +35,7 @@ fonttools = "*"
 editdistance = "*"
 pyclipper = "*"
 shapely = "*"
-efficientnet = "1.0.0"
+efficientnet = "*"
 
 [tool.poetry.dev-dependencies]
 black = "*"
@@ -44,7 +44,7 @@ mypy = "*"
 pytest = "*"
 pylint = "*"
 pytest-cov = "*"
-tensorflow = "^2.0.0"
+tensorflow = "*"
 opencv-python = "*"
 types-requests = "*"
 types-pkg-resources = "*"
@@ -56,7 +56,7 @@ vcs = "git"
 style = "semver"
 
 [tool.pytest.ini_options]
-addopts = "--cov=keras_ocr --cov-report=term-missing"
+addopts = "--cov=image_ocr --cov-report=term-missing"
 filterwarnings = [
     "ignore:the imp module is deprecated in favour of importlib;:DeprecationWarning"
 ]

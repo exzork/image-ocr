@@ -25,14 +25,14 @@ sys.path.insert(0, os.path.abspath("./stubs"))
 
 # -- Project information -----------------------------------------------------
 
-project = "keras_ocr"
+project = "image_ocr"
 copyright = "2019, Fausto Morales"
 author = "Fausto Morales"
 
-import keras_ocr
+import image_ocr
 
 # The short X.Y version
-version = keras_ocr.__version__
+version = image_ocr.__version__
 # The full version, including alpha/beta/rc tags
 # release = ''
 

@@ -1,2 +1,2 @@
 include versioneer.py
-include keras_ocr/_version.py
+include image_ocr/_version.py

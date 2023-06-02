@@ -4,7 +4,7 @@ Complete end-to-end training
 You may wish to train your own end-to-end OCR pipeline. Here's an example for
 how you might do it. Note that the image generator has many options not
 documented here (such as adding backgrounds and image augmentation). Check
-the documentation for the `keras_ocr.tools.get_image_generator` function for more details.
+the documentation for the `image_ocr.tools.get_image_generator` function for more details.
 
 Please note that, right now, we use a very simple training mechanism for the
 text detector which seems to work but does not match the method used in the
@@ -37,18 +37,18 @@ The backgrounds folder contains about just over 1,000 image backgrounds.
     import tensorflow as tf
     import sklearn.model_selection
 
-    import keras_ocr
+    import image_ocr
 
     assert tf.test.is_gpu_available(), 'No GPU is available.'
 
     data_dir = '.'
     alphabet = string.digits + string.ascii_letters + '!?. '
     recognizer_alphabet = ''.join(sorted(set(alphabet.lower())))
-    fonts = keras_ocr.data_generation.get_fonts(
+    fonts = image_ocr.data_generation.get_fonts(
         alphabet=alphabet,
         cache_dir=data_dir
     )
-    backgrounds = keras_ocr.data_generation.get_backgrounds(cache_dir=data_dir)
+    backgrounds = image_ocr.data_generation.get_backgrounds(cache_dir=data_dir)
 
 With a set of fonts, backgrounds, and alphabet, we now build our data generators.
 
@@ -61,7 +61,7 @@ We split our generators into train, validation, and test by separating the fonts
 
 .. code-block:: python
 
-    text_generator = keras_ocr.data_generation.get_text_generator(alphabet=alphabet)
+    text_generator = image_ocr.data_generation.get_text_generator(alphabet=alphabet)
     print('The first generated text is:', next(text_generator))
 
     def get_train_val_test_split(arr):
@@ -73,7 +73,7 @@ We split our generators into train, validation, and test by separating the fonts
     font_splits = get_train_val_test_split(fonts)
 
     image_generators = [
-        keras_ocr.data_generation.get_image_generator(
+        image_ocr.data_generation.get_image_generator(
             height=640,
             width=640,
             text_generator=text_generator,
@@ -94,7 +94,7 @@ We split our generators into train, validation, and test by separating the fonts
 
     # See what the first validation image looks like.
     image, lines = next(image_generators[1])
-    text = keras_ocr.data_generation.convert_lines_to_paragraph(lines)
+    text = image_ocr.data_generation.convert_lines_to_paragraph(lines)
     print('The first generated validation image (below) contains:', text)
     plt.imshow(image)
 
@@ -108,8 +108,8 @@ Here we build our detector and recognizer models. For both, we'll start with pre
 
 .. code-block:: python
 
-    detector = keras_ocr.detection.Detector(weights='clovaai_general')
-    recognizer = keras_ocr.recognition.Recognizer(
+    detector = image_ocr.detection.Detector(weights='clovaai_general')
+    recognizer = image_ocr.recognition.Recognizer(
         alphabet=recognizer_alphabet,
         weights='kurapan'
     )
@@ -169,7 +169,7 @@ converting our existing generator into a single-line generator. So we perform th
 
     max_length = 10
     recognition_image_generators = [
-        keras_ocr.data_generation.convert_image_generator_to_recognizer_input(
+        image_ocr.data_generation.convert_image_generator_to_recognizer_input(
             image_generator=image_generator,
             max_string_length=min(recognizer.training_model.input_shape[1][1], max_length),
             target_width=recognizer.model.input_shape[2],
@@ -224,10 +224,10 @@ Once training is done, you can use :code:`recognize` to extract text.
 
 .. code-block:: python
     
-    pipeline = keras_ocr.pipeline.Pipeline(detector=detector, recognizer=recognizer)
+    pipeline = image_ocr.pipeline.Pipeline(detector=detector, recognizer=recognizer)
     image, lines = next(image_generators[0])
     predictions = pipeline.recognize(images=[image])[0]
-    drawn = keras_ocr.tools.drawBoxes(
+    drawn = image_ocr.tools.drawBoxes(
         image=image, boxes=predictions, boxes_format='predictions'
     )
     print(

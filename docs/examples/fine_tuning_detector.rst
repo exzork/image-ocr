@@ -23,9 +23,9 @@ An interactive version of this example on Google Colab is provided `here
     import sklearn.model_selection
     import tensorflow as tf
 
-    import keras_ocr
+    import image_ocr
 
-    dataset = keras_ocr.datasets.get_icdar_2013_detector_dataset(
+    dataset = image_ocr.datasets.get_icdar_2013_detector_dataset(
         cache_dir='.',
         skip_illegible=False
     )
@@ -46,12 +46,12 @@ Now we split the dataset into training and validation.
         imgaug.augmenters.Multiply((0.8, 1.2), per_channel=0.2)
     ])
     generator_kwargs = {'width': 640, 'height': 640}
-    training_image_generator = keras_ocr.datasets.get_detector_image_generator(
+    training_image_generator = image_ocr.datasets.get_detector_image_generator(
         labels=train,
         augmenter=augmenter,
         **generator_kwargs
     )
-    validation_image_generator = keras_ocr.datasets.get_detector_image_generator(
+    validation_image_generator = image_ocr.datasets.get_detector_image_generator(
         labels=validation,
         **generator_kwargs
     )
@@ -61,7 +61,7 @@ We can visualize what the samples look like pretty easily.
 .. code-block:: python
 
     image, lines, confidence = next(training_image_generator)
-    canvas = keras_ocr.tools.drawBoxes(image=image, boxes=lines, boxes_format='lines')
+    canvas = image_ocr.tools.drawBoxes(image=image, boxes=lines, boxes_format='lines')
     plt.imshow(canvas)
 
 .. image:: ../_static/icdar2013_detection1.jpg
@@ -71,7 +71,7 @@ Now we can build the detector and train it.
 
 .. code-block:: python
 
-    detector = keras_ocr.detection.Detector()
+    detector = image_ocr.detection.Detector()
 
     batch_size = 1
     training_generator, validation_generator = [

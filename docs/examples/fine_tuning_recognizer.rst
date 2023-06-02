@@ -25,15 +25,15 @@ An interactive version of this example on Google Colab is provided `here
     import tensorflow as tf
     import sklearn.model_selection
 
-    import keras_ocr
+    import image_ocr
 
     assert tf.config.list_physical_devices('GPU'), 'No GPU is available.'
 
-    train_labels = keras_ocr.datasets.get_born_digital_recognizer_dataset(
+    train_labels = image_ocr.datasets.get_born_digital_recognizer_dataset(
         split='train',
         cache_dir='.'
     )
-    test_labels = keras_ocr.datasets.get_born_digital_recognizer_dataset(
+    test_labels = image_ocr.datasets.get_born_digital_recognizer_dataset(
         split='test',
         cache_dir='.'
     )
@@ -44,7 +44,7 @@ We next build our recognizer, using the default options to get a pretrained mode
 
 .. code-block:: python
 
-    recognizer = keras_ocr.recognition.Recognizer()
+    recognizer = image_ocr.recognition.Recognizer()
     recognizer.compile()
 
 We need to convert our dataset into the format that :code:`keras-ocr` requires. To 
@@ -63,7 +63,7 @@ are first converted to lowercase.
     train_labels, validation_labels = sklearn.model_selection.train_test_split(train_labels, test_size=0.2, random_state=42)
     (training_image_gen, training_steps), (validation_image_gen, validation_steps) = [
         (
-            keras_ocr.datasets.get_recognizer_image_generator(
+            image_ocr.datasets.get_recognizer_image_generator(
                 labels=labels,
                 height=recognizer.model.input_shape[1],
                 width=recognizer.model.input_shape[2],
@@ -117,7 +117,7 @@ Finally, run inference on a test sample.
     image_filepath, _, actual = test_labels[1]
     predicted = recognizer.recognize(image_filepath)
     print(f'Predicted: {predicted}, Actual: {actual}')
-    _ = plt.imshow(keras_ocr.tools.read(image_filepath))
+    _ = plt.imshow(image_ocr.tools.read(image_filepath))
 
 .. image:: ../_static/borndigital2.png
    :width: 256

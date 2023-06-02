@@ -1,5 +1,5 @@
 import numpy as np
-from keras_ocr import tools
+from image_ocr import tools
 
 
 def test_fix_line():

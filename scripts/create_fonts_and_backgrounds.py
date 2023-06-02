@@ -15,12 +15,12 @@ import numpy as np
 import tqdm
 import cv2
 
-import keras_ocr
+import image_ocr
 
 if __name__ == "__main__":
     fonts_commit = "a0726002eab4639ee96056a38cd35f6188011a81"
     fonts_sha256 = "e447d23d24a5bbe8488200a058cd5b75b2acde525421c2e74dbfb90ceafce7bf"
-    fonts_source_zip_filepath = keras_ocr.tools.download_and_verify(
+    fonts_source_zip_filepath = image_ocr.tools.download_and_verify(
         url=f"https://github.com/google/fonts/archive/{fonts_commit}.zip",
         cache_dir=".",
         sha256=fonts_sha256,
@@ -115,7 +115,7 @@ if __name__ == "__main__":
     for filepath in tqdm.tqdm(
         sorted(glob.glob("fonts-raw/**/**/**/*.ttf")), desc="Filtering fonts."
     ):
-        sha256 = keras_ocr.tools.sha256sum(filepath)
+        sha256 = image_ocr.tools.sha256sum(filepath)
         basename = os.path.basename(filepath)
         # We check the sha256 and filenames because some of the fonts
         # in the repository are duplicated (see TRIVIA.md).
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
         futures = [
             executor.submit(
-                keras_ocr.tools.download_and_verify,
+                image_ocr.tools.download_and_verify,
                 url=url,
                 cache_dir="./backgrounds",
                 verbose=False,
@@ -208,9 +208,9 @@ if __name__ == "__main__":
     image_paths = np.array(sorted(glob.glob("backgrounds/*.jpg")))
 
     def compute_metrics(filepath):
-        image = keras_ocr.tools.read(filepath)
+        image = image_ocr.tools.read(filepath)
         aspect_ratio = image.shape[0] / image.shape[1]
-        contour, _ = keras_ocr.tools.get_maximum_uniform_contour(image, fontsize=40)
+        contour, _ = image_ocr.tools.get_maximum_uniform_contour(image, fontsize=40)
         area = cv2.contourArea(contour) if contour is not None else 0
         return aspect_ratio, area
 
@@ -220,13 +220,13 @@ if __name__ == "__main__":
     filtered_paths = image_paths[
         (metrics[:, 0] < 3 / 2) & (metrics[:, 0] > 2 / 3) & (metrics[:, 1] > 1e6)
     ]
-    detector = keras_ocr.detection.Detector()
+    detector = image_ocr.detection.Detector()
     paths_with_text = [
         filepath
         for filepath in tqdm.tqdm(filtered_paths)
         if len(
             detector.detect(
-                images=[keras_ocr.tools.read_and_fit(filepath, width=640, height=640)]
+                images=[image_ocr.tools.read_and_fit(filepath, width=640, height=640)]
             )[0]
         )
         > 0
