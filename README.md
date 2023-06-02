@@ -4,6 +4,8 @@
 
 ## <b>It works exactly the same as keras-ocr, just do `pip install image-ocr` and replace `import image_ocr` in your project.</b>
 
+## <b>It supports new Google Colaboratory `python 3.10` backend</b>
+
 
 This is a slightly polished and packaged version of the [Keras CRNN implementation](https://github.com/kurapan/CRNN) and the published [CRAFT text detection model](https://github.com/clovaai/CRAFT-pytorch). It provides a high level API for training a text detection and OCR pipeline.
 
@@ -74,10 +76,10 @@ You may be wondering how the models in this package compare to existing cloud OC
 
 | model                                                                                                                         | latency | precision | recall |
 | ----------------------------------------------------------------------------------------------------------------------------- | ------- | --------- | ------ |
-| [AWS](https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/aws_annotations.json)                               | 719ms   | 0.45      | 0.48   |
-| [GCP](https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/google_annotations.json)                            | 388ms   | 0.53      | 0.58   |
-| [image-ocr](https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/image_ocr_annotations_scale_2.json) (scale=2) | 417ms   | 0.53      | 0.54   |
-| [image-ocr](https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/image_ocr_annotations_scale_3.json) (scale=3) | 699ms   | 0.5       | 0.59   |
+| [AWS](https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/aws_annotations.json)                               | 719ms   | 0.45      | 0.48   |
+| [GCP](https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/google_annotations.json)                            | 388ms   | 0.53      | 0.58   |
+| [image-ocr](https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/image_ocr_annotations_scale_2.json) (scale=2) | 417ms   | 0.53      | 0.54   |
+| [image-ocr](https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/image_ocr_annotations_scale_3.json) (scale=3) | 699ms   | 0.5       | 0.59   |
 
 - Precision and recall were computed based on an intersection over union of 50% or higher and a text similarity to ground truth of 50% or higher.
 - `keras-ocr` latency values were computed using a Tesla P4 GPU on Google Colab. `scale` refers to the argument provided to `image_ocr.pipelines.Pipeline()` which determines the upscaling applied to the image prior to inference.

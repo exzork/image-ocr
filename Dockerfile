@@ -4,8 +4,8 @@ WORKDIR /usr/src
 # change.
 RUN mkdir -p /root/.keras-ocr && ( \
     cd /root/.keras-ocr && \
-    curl -L -o craft_mlt_25k.h5 https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/craft_mlt_25k.h5 && \
-    curl -L -o crnn_kurapan.h5 https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/crnn_kurapan.h5 \
+    curl -L -o craft_mlt_25k.h5 https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/craft_mlt_25k.h5 && \
+    curl -L -o crnn_kurapan.h5 https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/crnn_kurapan.h5 \
     )
 COPY ./Pipfile* ./
 COPY ./Makefile ./

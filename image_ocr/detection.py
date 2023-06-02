@@ -646,12 +646,12 @@ def build_torch_model(weights_path=None):
 
 PRETRAINED_WEIGHTS = {
     ("clovaai_general", True): {
-        "url": "https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/craft_mlt_25k.pth",
+        "url": "https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/craft_mlt_25k.pth",
         "filename": "craft_mlt_25k.pth",
         "sha256": "4a5efbfb48b4081100544e75e1e2b57f8de3d84f213004b14b85fd4b3748db17",
     },
     ("clovaai_general", False): {
-        "url": "https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/craft_mlt_25k.h5",
+        "url": "https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/craft_mlt_25k.h5",
         "filename": "craft_mlt_25k.h5",
         "sha256": "7283ce2ff05a0617e9740c316175ff3bacdd7215dbdf1a726890d5099431f899",
     },

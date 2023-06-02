@@ -146,7 +146,7 @@ def get_born_digital_recognizer_dataset(split="train", cache_dir=None):
     if split in ["train", "traintest"]:
         train_dir = os.path.join(main_dir, "train")
         training_zip_path = tools.download_and_verify(
-            url="https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/Challenge1_Training_Task3_Images_GT.zip",  # pylint: disable=line-too-long
+            url="https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/Challenge1_Training_Task3_Images_GT.zip",  # pylint: disable=line-too-long
             filename="Challenge1_Training_Task3_Images_GT.zip",
             cache_dir=main_dir,
             sha256="8ede0639f5a8031d584afd98cee893d1c5275d7f17863afc2cba24b13c932b07",
@@ -169,7 +169,7 @@ def get_born_digital_recognizer_dataset(split="train", cache_dir=None):
     if split in ["test", "traintest"]:
         test_dir = os.path.join(main_dir, "test")
         test_zip_path = tools.download_and_verify(
-            url="https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/Challenge1_Test_Task3_Images.zip",
+            url="https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/Challenge1_Test_Task3_Images.zip",
             filename="Challenge1_Test_Task3_Images.zip",
             cache_dir=main_dir,
             sha256="8f781b0140fd0bac3750530f0924bce5db3341fd314a2fcbe9e0b6ca409a77f0",
@@ -178,7 +178,7 @@ def get_born_digital_recognizer_dataset(split="train", cache_dir=None):
             with zipfile.ZipFile(test_zip_path) as zfile:
                 zfile.extractall(test_dir)
         test_gt_path = tools.download_and_verify(
-            url="https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/Challenge1_Test_Task3_GT.txt",
+            url="https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/Challenge1_Test_Task3_GT.txt",
             cache_dir=test_dir,
             filename="Challenge1_Test_Task3_GT.txt",
             sha256="fce7f1228b7c4c26a59f13f562085148acf063d6690ce51afc395e0a1aabf8be",
@@ -232,7 +232,7 @@ def get_icdar_2013_detector_dataset(cache_dir=None, skip_illegible=False):
     main_dir = os.path.join(cache_dir, "icdar2013")
     training_images_dir = os.path.join(main_dir, "Challenge2_Training_Task12_Images")
     training_zip_images_path = tools.download_and_verify(
-        url="https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/Challenge2_Training_Task12_Images.zip",  # pylint: disable=line-too-long
+        url="https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/Challenge2_Training_Task12_Images.zip",  # pylint: disable=line-too-long
         cache_dir=main_dir,
         filename="Challenge2_Training_Task12_Images.zip",
         sha256="7a57d1699fbb92db3ad82c930202938562edaf72e1c422ddd923860d8ace8ded",
@@ -242,7 +242,7 @@ def get_icdar_2013_detector_dataset(cache_dir=None, skip_illegible=False):
             zfile.extractall(training_images_dir)
     training_gt_dir = os.path.join(main_dir, "Challenge2_Training_Task2_GT")
     training_zip_gt_path = tools.download_and_verify(
-        url="https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/Challenge2_Training_Task2_GT.zip",  # pylint: disable=line-too-long
+        url="https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/Challenge2_Training_Task2_GT.zip",  # pylint: disable=line-too-long
         cache_dir=main_dir,
         filename="Challenge2_Training_Task2_GT.zip",
         sha256="4cedd5b1e33dc4354058f5967221ac85dbdf91a99b30f3ab1ecdf42786a9d027",
@@ -320,7 +320,7 @@ def get_icdar_2019_semisupervised_dataset(cache_dir=None):
         with zipfile.ZipFile(training_zip_2) as zfile:
             zfile.extractall(main_dir)
     ground_truth = tools.download_and_verify(
-        url="https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/mlt2019_dataset.json",  # pylint: disable=line-too-long
+        url="https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/mlt2019_dataset.json",  # pylint: disable=line-too-long
         cache_dir=main_dir,
         filename="mlt2019_dataset.json",
     )

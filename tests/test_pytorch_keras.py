@@ -22,12 +22,12 @@ def test_pytorch_identical_output():
     import torch  # pylint: disable=import-outside-toplevel
 
     weights_path_torch = image_ocr.tools.download_and_verify(
-        url="https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/craft_mlt_25k.pth",
+        url="https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/craft_mlt_25k.pth",
         filename="craft_mlt_25k.pth",
         sha256="4a5efbfb48b4081100544e75e1e2b57f8de3d84f213004b14b85fd4b3748db17",
     )
     weights_path_keras = image_ocr.tools.download_and_verify(
-        url="https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/craft_mlt_25k.h5",
+        url="https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/craft_mlt_25k.h5",
         filename="craft_mlt_25k.h5",
         sha256="7283ce2ff05a0617e9740c316175ff3bacdd7215dbdf1a726890d5099431f899",
     )

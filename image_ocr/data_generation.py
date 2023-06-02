@@ -198,7 +198,7 @@ def get_backgrounds(cache_dir=None):
         cache_dir = os.path.expanduser(os.path.join("~", ".keras-ocr"))
     backgrounds_dir = os.path.join(cache_dir, "backgrounds")
     backgrounds_zip_path = tools.download_and_verify(
-        url="https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/backgrounds.zip",
+        url="https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/backgrounds.zip",
         sha256="f263ed0d55de303185cc0f93e9fcb0b13104d68ed71af7aaaa8e8c91389db471",
         filename="backgrounds.zip",
         cache_dir=cache_dir,
@@ -232,7 +232,7 @@ def get_fonts(
     if cache_dir is None:
         cache_dir = os.path.expanduser(os.path.join("~", ".keras-ocr"))
     fonts_zip_path = tools.download_and_verify(
-        url="https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/fonts.zip",
+        url="https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/fonts.zip",
         sha256="d4d90c27a9bc4bf8fff1d2c0a00cfb174c7d5d10f60ed29d5f149ef04d45b700",
         filename="fonts.zip",
         cache_dir=cache_dir,
@@ -246,7 +246,7 @@ def get_fonts(
     if exclude_smallcaps:
         with open(
             tools.download_and_verify(
-                url="https://github.com/faustomorales/keras-ocr/releases/download/v0.8.4/fonts_smallcaps.txt",
+                url="https://github.com/geo-tp/image-ocr/releases/download/v0.8.4/fonts_smallcaps.txt",
                 sha256="6531c700523c687f02852087530d1ab3c7cc0b59891bbecc77726fbb0aabe68e",
                 filename="fonts_smallcaps.txt",
                 cache_dir=cache_dir,
@@ -255,7 +255,9 @@ def get_fonts(
             encoding="utf8",
         ) as f:
             smallcaps_fonts = f.read().split("\n")
-            smallcaps_fonts = [ origpath.replace('/', os.path.sep) for origpath in smallcaps_fonts ]
+            smallcaps_fonts = [
+                origpath.replace("/", os.path.sep) for origpath in smallcaps_fonts
+            ]
             font_filepaths = [
                 filepath
                 for filepath in font_filepaths
@@ -438,7 +440,12 @@ def draw_text_image(
         while not all(
             cv2.pointPolygonTest(contour=transformed_contour, pt=pt, measureDist=False)
             >= 0
-            for pt in [(int(x), int(y)), (int(x2), int(y)), (int(x2), int(y2)), (int(x), int(y2))]
+            for pt in [
+                (int(x), int(y)),
+                (int(x2), int(y)),
+                (int(x2), int(y2)),
+                (int(x), int(y2)),
+            ]
         ):
             if x2 > end_x:
                 dy = max(1, max_y - y)
@@ -533,7 +540,10 @@ def compute_transformed_contour(width, height, fontsize, M, contour, minarea=0.5
     inside = (
         np.array(
             [
-                cv2.pointPolygonTest(contour=contour, pt=(int(x), int(y)), measureDist=False) >= 0
+                cv2.pointPolygonTest(
+                    contour=contour, pt=(int(x), int(y)), measureDist=False
+                )
+                >= 0
                 for x, y in slots
             ]
         )
@@ -568,7 +578,10 @@ def compute_transformed_contour(width, height, fontsize, M, contour, minarea=0.5
         next(
             index
             for index, contour in enumerate(newContours)
-            if cv2.pointPolygonTest(contour=contour, pt=(int(x), int(y)), measureDist=False) >= 0
+            if cv2.pointPolygonTest(
+                contour=contour, pt=(int(x), int(y)), measureDist=False
+            )
+            >= 0
         )
     ][:, 0, :]
     return contour
