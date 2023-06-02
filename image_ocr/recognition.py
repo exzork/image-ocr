@@ -83,8 +83,8 @@ def _transform(inputs):
     locnet_y = tf.reshape(locnet_y, (-1, 2, 3))
     locnet_y = tf.cast(locnet_y, "float32")
 
-    output_height = output_size[0]
-    output_width = output_size[1]
+    output_height = output_size[0] if output_size[0] else 50
+    output_width = output_size[1] if output_size[1] else 7
     indices_grid = _meshgrid(output_height, output_width)
     indices_grid = tf.expand_dims(indices_grid, 0)
     indices_grid = tf.reshape(indices_grid, [-1])  # flatten?
@@ -100,9 +100,6 @@ def _transform(inputs):
     # Interpolate
     height_float = tf.cast(height, dtype="float32")
     width_float = tf.cast(width, dtype="float32")
-
-    output_height = output_size[0]
-    output_width = output_size[1]
 
     x = tf.cast(x, dtype="float32")
     y = tf.cast(y, dtype="float32")
