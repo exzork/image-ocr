@@ -1,6 +1,9 @@
 # image-ocr [![Documentation Status](https://readthedocs.org/projects/keras-ocr/badge/?version=latest)](https://keras-ocr.readthedocs.io/en/latest/?badge=latest)
 
-## <b>NOTE : This is an updated version of keras-ocr to work with the latest versions of python and tensorflow.</b>
+## <b>NOTE : `image-ocr` is an updated version of `keras-ocr` to work with the latest versions of python and tensorflow.</b>
+
+## <b>It works exactly the same as keras-ocr, just do `pip install image-ocr` and replace `import image_ocr` in your project.</b>
+
 
 This is a slightly polished and packaged version of the [Keras CRNN implementation](https://github.com/kurapan/CRNN) and the published [CRAFT text detection model](https://github.com/clovaai/CRAFT-pytorch). It provides a high level API for training a text detection and OCR pipeline.
 
