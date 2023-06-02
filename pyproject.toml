@@ -16,11 +16,11 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 description = "A packaged and flexible version of the CRAFT text detector and Keras CRNN recognition model."
-homepage = "https://github.com/geo-tp/image_ocr"
+homepage = "https://github.com/geo-tp/kerasocr"
 license = "MIT"
-name = "image_ocr"
+name = "kerasocr"
 readme = "README.md"
-repository = "https://github.com/geo-tp/image_ocr"
+repository = "https://github.com/geo-tp/kerasocr"
 # Placeholder for poetry-dynamic-versioning
 version = "0.0.0"
 
@@ -56,7 +56,7 @@ vcs = "git"
 style = "semver"
 
 [tool.pytest.ini_options]
-addopts = "--cov=image_ocr --cov-report=term-missing"
+addopts = "--cov=keras_ocr --cov-report=term-missing"
 filterwarnings = [
     "ignore:the imp module is deprecated in favour of importlib;:DeprecationWarning"
 ]
