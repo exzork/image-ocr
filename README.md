@@ -12,6 +12,8 @@
 
 ### - [Recognizer Training](https://colab.research.google.com/drive/1AcnHoeRycoqNuMNS0T146LH1MbtmgV_T?usp=sharing)
 
+### - [Recognizer Training - Custom set](https://colab.research.google.com/drive/1OQZzcWespMTAyxguw6y95NcbFNCgK8qb?usp=sharing)
+
 ### - [Using](https://colab.research.google.com/drive/1eRf9CbhZ8fVakjYN4yCtTqB-MPWejVxN?usp=sharing)
 
 ## <b>Informations</b>
@@ -72,6 +74,8 @@ for ax, image, predictions in zip(axs, images, prediction_groups):
 Detector training example : [Detector Training Colab](https://colab.research.google.com/drive/15maYyNZdqnLl_P_all2a-x9GF7Ug2tIJ?usp=sharing)
 
 Recognizer training example [Recognizer Training Colab](https://colab.research.google.com/drive/1AcnHoeRycoqNuMNS0T146LH1MbtmgV_T?usp=sharing)
+
+Recognizer training with custom assets [Recognizer Training Colab](https://colab.research.google.com/drive/1OQZzcWespMTAyxguw6y95NcbFNCgK8qb?usp=sharing)
 
 
 ## <b>Comparing image-ocr and other OCR approaches</b>
