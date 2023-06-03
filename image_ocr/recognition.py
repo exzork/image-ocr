@@ -83,8 +83,12 @@ def _transform(inputs):
     locnet_y = tf.reshape(locnet_y, (-1, 2, 3))
     locnet_y = tf.cast(locnet_y, "float32")
 
-    output_height = output_size[0] if output_size[0] else 50
-    output_width = output_size[1] if output_size[1] else 7
+    params = DEFAULT_BUILD_PARAMS
+    default_width = params["width"] // params["pool_size"] ** 2
+    default_height = params["height"] // params["pool_size"] ** 2
+
+    output_height = output_size[0] if output_size[0] else default_height
+    output_width = output_size[1] if output_size[1] else default_width
     indices_grid = _meshgrid(output_height, output_width)
     indices_grid = tf.expand_dims(indices_grid, 0)
     indices_grid = tf.reshape(indices_grid, [-1])  # flatten?
